@@ -52,3 +52,22 @@ func testHandler(db *gorm.DB) gin.HandlerFunc {
 		utils.Petition(c, 200, "请求成功", data)
 	}
 }
+
+type Test1 struct {
+	Name  string
+	Code  int
+	Child *Test1
+}
+
+// 学习 自引用
+func pakerName(db *gorm.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+
+		data := []Test1{
+			{Name: "Lisa", Code: 1, Child: &Test1{Name: "Li", Code: 2}},
+			{Name: "Mreke", Code: 1, Child: &Test1{Name: "Mr", Code: 2}},
+		}
+
+		utils.Petition(c, 200, "请求成功", data)
+	}
+}

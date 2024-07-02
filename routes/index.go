@@ -12,4 +12,5 @@ func SetupRoutes(r *gin.Engine, db *gorm.DB) {
 	r.POST("/api/inster/add", insterAddHandler(db))
 	r.POST("/api/inster/update", insterUpdateHandler(db))
 	r.GET("/api/test/paker", pakerHandler(db))
+	r.GET("/api/test/pakerName", pakerName(db))
 }
